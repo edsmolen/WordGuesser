@@ -61,3 +61,19 @@ function makeRegularExpression(input) {
   // TODO check for errors?  If the available letters are "ABBC" and the pattern is "C?C", that second C should be drawn in red.
   return new RegExp(reSource);
 }
+
+function patternChanged() {
+  const patternInput = document.getElementById("pattern");
+  const showAllButton = document.getElementById("show all");
+  const reDebugOut = document.getElementById("regex");
+  const pattern = patternInput.value;
+  showAllButton.disabled = pattern == "";
+  const re = makeRegularExpression(pattern);
+  reDebugOut.innerText = re.toString();
+}
+
+function showAll() {
+  const patternInput = document.getElementById("pattern");
+  patternInput = "";
+  patternChanged();
+}
