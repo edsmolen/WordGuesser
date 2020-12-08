@@ -31,3 +31,18 @@ function permutations(available, minLength = 3) {
   helper("", available);
   return result;
 }
+
+function availableChanged(availableInput) {
+  const output = document.getElementById("output");
+  output.innerText = "";
+  let available = availableInput.value;
+  // TODO convert to all caps.
+  // TODO remove spaces.
+  permutations(available).forEach(string => {
+    if (words.has(string)) {
+      const div = document.createElement("div");
+      div.innerText = string;
+      output.appendChild(div);
+    }
+  });
+}
