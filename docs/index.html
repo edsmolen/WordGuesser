@@ -4,5 +4,10 @@
     <SCRIPT SRC="WordGuesser.js"></SCRIPT>
   </HEAD>
   <BODY ONLOAD="initOnce()">
+    <DIV>
+      Letters: <INPUT ID="available" ONINPUT="availableChanged(this)"></INPUT> 
+    </DIV>
+    <DIV ID="output" STYLE="border: 0.2em solid blue; padding: 0.2em; display: inline-block;">
+    </DIV> 
   </BODY>
 </HTML>
