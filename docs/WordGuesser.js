@@ -8,7 +8,7 @@ async function loadWords() {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
   const body = await response.text();
-  const result = new set();
+  const result = new Set();
   body.split("\n").forEach(line => set.add(line));
   return result;
 }
