@@ -7,6 +7,9 @@
     <DIV>
       Letters: <INPUT ID="available" ONINPUT="availableChanged(this)"></INPUT> 
     </DIV>
+    <DIV>
+      Pattern: <INPUT ID="pattern" ONINPUT="patternChanged()"></INPUT> <BUTTON id="show all" disabled ONCLICK="showAll()">Show All</BUTTON> <SPAN style="font-family: monospace" ID="regex">//</SPAN>
+    </DIV>
     <DIV ID="output" STYLE="border: 0.2em solid blue; padding: 0.2em; display: inline-block;">
     </DIV> 
   </BODY>
