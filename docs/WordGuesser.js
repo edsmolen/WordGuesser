@@ -16,3 +16,18 @@ async function initOnce() {
   words = await loadWords();
   alert("loaded " + words.size + " words.");
 }
+
+// Generate all permutations of the given string.
+function permutations(available, minLength = 3) {
+  const result = new Set();
+  function helper(soFar, available) {
+    if (soFar.length >= minLength) {
+      result.add(soFar);
+    }
+    Array.from(available).forEach((next, index) => {
+      helper(soFar + next, available.substring(0, index) + available.substring(index+1));
+    });
+  }
+  helper("", available);
+  return result;
+}
