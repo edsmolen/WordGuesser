@@ -8,7 +8,7 @@ async function loadWords() {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
   const body = await response.text();
-  const result = new Set(body.split("\n"));
+  const result = new Set(body.split("\n").map(line => line.trim().toUpperCase()));
   return result;
 }
 
@@ -35,9 +35,7 @@ function permutations(available, minLength = 3) {
 function availableChanged(availableInput) {
   const output = document.getElementById("output");
   output.innerText = "";
-  let available = availableInput.value;
-  // TODO convert to all caps.
-  // TODO remove spaces.
+  const available = availableInput.value.trim().toUpperCase();
   permutations(available).forEach(string => {
     if (words.has(string)) {
       const div = document.createElement("div");
