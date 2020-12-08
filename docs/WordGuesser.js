@@ -74,6 +74,6 @@ function patternChanged() {
 
 function showAll() {
   const patternInput = document.getElementById("pattern");
-  patternInput.innerText = "";
+  patternInput.value = "";
   patternChanged();
 }
