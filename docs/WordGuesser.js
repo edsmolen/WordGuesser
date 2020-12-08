@@ -44,3 +44,20 @@ function availableChanged(availableInput) {
     }
   });
 }
+
+function makeRegularExpression(input) {
+  input = input.trim().toUpperCase();
+  let reSource = "";
+  Array.from(input).forEach(char => {
+    if (/[A-Z]/.test(char)) {
+      reSource += char;
+    } else {
+      reSource += ".";
+    }
+  });
+  if (reSource != "") {
+    reSource = "^" + reSource + "$";
+  }
+  // TODO check for errors?  If the available letters are "ABBC" and the pattern is "C?C", that second C should be drawn in red.
+  return new RegExp(reSource);
+}
