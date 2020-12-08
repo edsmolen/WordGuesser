@@ -32,15 +32,21 @@ function permutations(available, minLength = 3) {
   return result;
 }
 
+// What results are we displaying?
+// This is a global variable only debugging and development.
+const currentlyDisplayed = [];
+
 function availableChanged(availableInput) {
   const output = document.getElementById("output");
   output.innerText = "";
   const available = availableInput.value.trim().toUpperCase();
+  currentlyDisplayed.length = 0;
   permutations(available).forEach(string => {
     if (words.has(string)) {
       const div = document.createElement("div");
       div.innerText = string;
       output.appendChild(div);
+      currentlyDisplayed.push(string);
     }
   });
 }
