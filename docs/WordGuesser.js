@@ -14,5 +14,5 @@ async function loadWords() {
 
 async function initOnce() {
   words = await loadWords();
-  alert("loaded " + words.size() + " words.");
+  alert("loaded " + words.size + " words.");
 }
