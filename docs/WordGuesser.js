@@ -3,7 +3,8 @@
 let words;
 
 async function loadWords() {
-  const response = await fetch("https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt");
+    const response = await fetch("https://edsmolen.github.io/WordGuesser/usa2.txt");
+//  const response = await fetch("https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt");
    if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
@@ -14,7 +15,7 @@ async function loadWords() {
 
 async function initOnce() {
   words = await loadWords();
-  alert("loaded " + words.size + " words.");
+//  alert("loaded " + words.size + " words.");
 }
 
 // Generate all permutations of the given string.
@@ -42,7 +43,7 @@ function availableChanged(availableInput) {
   const available = availableInput.value.trim().toUpperCase();
   currentlyDisplayed.length = 0;
   permutations(available).forEach(string => {
-    if (words.has(string)) {
+    if (words.has(string)&&re.test(string)) {
       const div = document.createElement("div");
       div.innerText = string;
       output.appendChild(div);
@@ -67,14 +68,14 @@ function makeRegularExpression(input) {
   // TODO check for errors?  If the available letters are "ABBC" and the pattern is "C?C", that second C should be drawn in red.
   return new RegExp(reSource);
 }
-
+let re = /./;
 function patternChanged() {
   const patternInput = document.getElementById("pattern");
   const showAllButton = document.getElementById("show all");
   const reDebugOut = document.getElementById("regex");
   const pattern = patternInput.value;
   showAllButton.disabled = pattern == "";
-  const re = makeRegularExpression(pattern);
+        re = makeRegularExpression(pattern);
   reDebugOut.innerText = re.toString();
 }
 
